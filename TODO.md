@@ -1,0 +1,1 @@
+Ajouter l'état du salarié dans la bdd > malade, absent, congé

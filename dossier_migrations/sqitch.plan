@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=gestTp
+
+01-tables 2023-11-08T20:19:42Z Mickaeldolle <dolle.mickael@gmail.com> # Creation des tables
+02-seeding 2023-11-08T20:20:14Z Mickaeldolle <dolle.mickael@gmail.com> # Creation des fausses données

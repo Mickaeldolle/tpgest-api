@@ -1,0 +1,31 @@
+{
+  "name": "projet_employeegesttp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "DEBUG=projet:* NODE_ENV=development npx nodemon server.js",
+    "test": "jest",
+    "db:create": "psql -d employeegesttp -f /home/mickael/development/personal_projects/projet_employeeGestTP/data/create_table.sql",
+    "db:seeding": "psql -d employeegesttp -f /home/mickael/development/personal_projects/projet_employeeGestTP/data/seeding.sql",
+    "db:reset": "db:create && npm run db:seeding"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  }
+}

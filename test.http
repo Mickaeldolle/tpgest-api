@@ -1,0 +1,115 @@
+GET http://localhost:3000/sites/
+
+###
+
+GET http://localhost:3000/teams/2
+
+
+###
+POST http://localhost:3000/employees/
+Content-Type: application/json
+
+  {
+    "lastname": "nouveau",
+    "firstname": "pinpin2",
+    "intern_identification": 154289,
+    "contract_id": 1,
+    "role_id": 1,
+    "team_id": 2
+  }
+
+###
+
+POST http://localhost:3000/?search=contract
+Content-Type: application/json
+
+  {
+    "label": "Faisair de café"
+  }
+
+###
+
+POST http://localhost:3000/sites/
+Content-Type: application/json
+
+{
+  "intern_identification": "CH3258",
+  "label": "Luminaire route machin",
+  "latitude": "49.273989",
+  "longitude": "4.037277",
+  "team_id": 2,
+  "client_id": 1
+}
+
+###
+
+POST http://localhost:3000/contracts/
+Content-Type: application/json
+
+  {
+    "label": "Stagiaire"
+  }
+
+###
+
+POST http://localhost:3000/clients/
+Content-Type: application/json
+
+  {
+    "intern_reference": "CL188",
+    "name": "Commune de Fismes"
+  }
+
+###
+
+POST http://localhost:3000/attestations/
+Content-Type: application/json
+
+  {
+    "label": "whelsook"
+  }
+
+###
+
+POST http://localhost:3000/contracts/
+Content-Type: application/json
+
+  {
+    "label": "Contrat chantuygiere 3"
+  }
+
+###
+
+PATCH http://localhost:3000/employees/2
+Content-Type: application/json
+
+{
+  "lastname": "modif",
+  "firstname": "modifcon",
+  "intern_identification": "897458"
+}
+
+### 
+
+PATCH http://localhost:3000/clients/3
+Content-Type: application/json
+
+{
+  "intern_reference": "CL058"
+}
+
+
+### 
+
+PATCH http://localhost:3000/attestations/3
+Content-Type: application/json
+
+{
+  "label": "malauc"
+}
+
+### 
+
+DELETE http://localhost:3000/clients/2
+
+### 
