@@ -23,12 +23,12 @@ INSERT INTO "role" ("label") VALUES
 
 INSERT INTO "employee" ("lastname", "firstname", "intern_identification", "contract_starting", "contract_id", "role_id", "team_id", "created_at") VALUES
   ('Jojo', 'bernard', 107804, NOW(), 1, 1, 2, NOW()),
-  ('Jean', 'Cule', 354798, NOW(), 1, 2, 2, NOW()),
-  ('Toto', 'tata', 106874, NOW(), 3, 1, 2, NOW()),
+  ('Jean', 'Toto', 354798, NOW(), 1, 2, 2, NOW()),
+  ('Claude', 'tata', 106874, NOW(), 3, 1, 2, NOW()),
   ('Binouz', 'Obar', 325845, NOW(), 1, 3, 2, NOW()),
   ('John', 'Doe', 65874, NOW(), 2, 3, 1, NOW()),
   ('Foo', 'Baz', 987452, NOW(), 1, 1, 1, NOW()),
-  ('Bob', 'Pet', 785956, NOW(), 1, 1, 1, NOW()),
+  ('Bob', 'Bobby', 785956, NOW(), 1, 1, 1, NOW()),
   ('Michel', 'Michmich', 654258, NOW(), 1, 4, NULL, NOW());
 
 
