@@ -3,7 +3,7 @@
 BEGIN;
 
 DROP TABLE IF EXISTS 
-"employee", "contract", "attestation", "role", "team", "machine", "construction_site", "location", "skill", "client", "employee_has_attestation", "employee_has_skill" 
+"contract", "role", "client", "construction_site", "team", "employee", "attestation", "tool_type", "tool", "rental_company", "rental", "skill", "employee_has_attestation", "employee_has_skill" 
 CASCADE;
 
 COMMIT;

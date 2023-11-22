@@ -2,8 +2,6 @@
 
 BEGIN;
 
-BEGIN;
-
 INSERT INTO "contract" ("label") VALUES
   ('cdi'),
   ('cdd'),
@@ -11,33 +9,49 @@ INSERT INTO "contract" ("label") VALUES
   ('stagiaire'),
   ('alternant');
 
-INSERT INTO "team" ("name") VALUES
-  ('Binouz Obar'),
-  ('John Doe');
-
 INSERT INTO "role" ("label") VALUES 
   ('ouvrier'),
   ('chef d''equipe'),
   ('chef de chantier'),
   ('conducteur de travaux');
+  
+INSERT INTO "client" ("intern_identification", "name") VALUES
+  ('CL230', 'Communauté urbaine du grand Reims'),
+  ('CL198', 'Eurovia');
+  
+INSERT INTO "construction_site" ("intern_identification", "label", "latitude", "longitude", "client_id") VALUES
+  ('CH10080', 'Construction d''un giratoire', 49.413222, 2.788412, 2),
+  ('CH25691', 'Aménagement VRD 18 logements', 49.275989, 4.037377, 1),
+  ('CH50080', 'Réaménagement Rue Victor Etienne Fismes', 49.307056, 3.696436, 1);
 
-INSERT INTO "employee" ("lastname", "firstname", "intern_identification", "contract_starting", "contract_id", "role_id", "team_id", "created_at") VALUES
-  ('Jojo', 'bernard', 107804, NOW(), 1, 1, 2, NOW()),
-  ('Jean', 'Toto', 354798, NOW(), 1, 2, 2, NOW()),
-  ('Claude', 'tata', 106874, NOW(), 3, 1, 2, NOW()),
-  ('Binouz', 'Obar', 325845, NOW(), 1, 3, 2, NOW()),
-  ('John', 'Doe', 65874, NOW(), 2, 3, 1, NOW()),
-  ('Foo', 'Baz', 987452, NOW(), 1, 1, 1, NOW()),
-  ('Bob', 'Bobby', 785956, NOW(), 1, 1, 1, NOW()),
-  ('Michel', 'Michmich', 654258, NOW(), 1, 4, NULL, NOW());
+INSERT INTO "team" ("name", "construction_site_id") VALUES
+  ('Binouz Obar', 1),
+  ('John Doe', 2),
+  ('Jean Bon', 3);
 
+INSERT INTO "status" ("label") VALUES
+  ('actif'),
+  ('cp'),
+  ('am'),
+  ('at'),
+  ('demissionaire'),
+  ('licencié');
 
+INSERT INTO "employee" ("intern_identification", "firstname", "lastname", "nickname", "contract_id", "role_id", "team_id", "status_id") VALUES
+  (107804, 'Jojo', 'Bernard', 'Jojo Bernard',  1, 1, 2, 1),
+  (354798, 'Jean', 'Toto', 'Jean Toto', 1, 2, 2, 1),
+  (106874, 'Claude', 'Tata', 'Claude Tata', 3, 1, 2, 1),
+  (325845, 'Binouz', 'Obar', 'Binouz Obar', 1, 3, 1, 1),
+  (65874, 'John', 'Doe', 'John Doe', 2, 3, 2, 1),
+  (987452, 'Foo', 'Baz', 'Foo Baz', 1, 1, 1, 1),
+  (785956, 'Bob', 'Bobby', 'Bob Bobby', 1, 1, 1, 1),
+  (654258, 'Michel', 'Michmich', 'Michel Michmich', 1, 4, NULL, 1),
+  (758965, 'Jean', 'Bon', 'Jean Bon', 1, 3, 3, 1),
+  (956562, 'Pierre', 'Pong', 'Pierre Pong', 1, 2, 3, 1),
+  (965842, 'Alphonse', 'Lecuq', 'Alphonse Lecuq', 1, 1, 3, 1),
+  (956987, 'Spider', 'Man', 'Spider Man', 1, 2, 3, 1);
 
-INSERT INTO "location" ("reference", "label", "price", "starting_location", "ending_location", "created_at") VALUES
-('LOX487', 'plaque vibrante 70kg', 22.5, NOW() + INTERVAL '15 days', NOW() + INTERVAL '20 days', NOW()),
-('KIL874', 'minipelle marque inconnu 2.5t', 80.00, NOW() + INTERVAL '5 days', NOW() + INTERVAL '12 days', NOW());
-
- INSERT INTO "attestation" ("label") VALUES
+INSERT INTO "attestation" ("label") VALUES
   ('CACES A'),
   ('CACES B'),
   ('CACES C1'),
@@ -50,25 +64,36 @@ INSERT INTO "location" ("reference", "label", "price", "starting_location", "end
   ('decoupeuse'),
   ('SST');
 
-INSERT INTO "machine" ("intern_identification", "label", "attestation_id", "location_id", "created_at") VALUES
-  ('MR502', 'minipelle chenille kubota 5.7t', 1, NULL, NOW()),
-  ('MR415', 'pelle pneu liebheer 18t', 2, NULL, NOW()),
-  ('MR312', 'chargeuse liebheer pneu 4t', 1, NULL, NOW()),
-  ('MR250', 'chargeuse kubota pneu 4t', 1, NULL, NOW()),
-  ('MR560', '8x4 bibenne', 8, NULL, NOW()),
-  ('MR360', '8x4 grue', 8, NULL, NOW()),
-  ('MR860', '8x4 ampliroll', 8, NULL, NOW()),
-  ('MR1470', 'cabane de chantier', NULL, NULL, NOW()),
-  ('LOC21', 'plaque vibrante', NULL, 1, NOW()),
-  ('LOC28', 'minipelle marque inconnu 2.5t', 1, 2, NOW());
 
-INSERT INTO "client" ("intern_reference", "name", "created_at") VALUES
-  ('CL230', 'Communauté urbaine du grand Reims', NOW()),
-  ('CL198', 'Eurovia', NOW());
+INSERT INTO "tool_type" ("type") VALUES
+  ('engin'),
+  ('outillage'),
+  ('equipement'),
+  ('transport');
 
-INSERT INTO "construction_site" ("intern_identification", "label", "latitude", "longitude", "team_id", "client_id", "created_at") VALUES
-  ('CH10080', 'Construction d''un giratoire', 49.413222, 2.788412, 1, 2, NOW()),
-  ('CH25691', 'Aménagement VRD 18 logements', 49.275989, 4.037377, 2, 1, NOW());
+INSERT INTO "tool" ("intern_identification", "label", "team_id", "attestation_id", "tool_type_id", "employee_id") VALUES
+  ('MR502', 'minipelle chenille kubota 5.7t', 1, 1, 1, NULL),
+  ('MR415', 'pelle pneu liebheer 18t', 2, 2, 1, NULL),
+  ('MR312', 'chargeuse liebheer pneu 4t', 1, 1, 1, NULL),
+  ('MR250', 'chargeuse kubota pneu 4t', 2, 1, 1, NULL),
+  ('LOC21', 'plaque vibrante', 1, NULL, 2, NULL),
+  ('MR1470', 'cabane de chantier', 1, NULL, 3, NULL),
+  ('LOC28', 'minipelle marque inconnu 2.5t', 2, 1, 1, NULL),
+  ('MR560', '8x4 bibenne 19T', 2,  8, 4, 6),
+  ('MR860', '8x4 ampliroll 15T', 1, 8, 4, 2),
+  ('MR985', 'Semi Benne alu 30T', 3, 8, 4, 11),
+  ('LOC874', '8x4 Grue Derichebourd', 1, NULL, 4, NULL),
+  ('LOC652', 'Pilonneuse', 3, NULL, 2, NULL);
+
+INSERT INTO "rental_company" ("intern_identification", "label") VALUES
+  ('LOX123', 'Loxam Reims la neuvillette'),
+  ('SAL887', 'Salti Reims la neuvillette'),
+  ('DER459', 'Derichebourd Soissons');
+
+INSERT INTO "rental" ("price","tool_id", "rental_company_id") VALUES
+  (12.5, 5, 2),
+  (95.8, 7, 1),
+  (85.9, 11, 3);
 
 INSERT INTO "skill" ("label") VALUES
   ('maçon'),
@@ -78,39 +103,47 @@ INSERT INTO "skill" ("label") VALUES
   ('chauffeur engin'),
   ('chauffeur poid lourd');
 
-INSERT INTO "employee_has_attestation" ("attestation_id", "employee_id", "created_at") VALUES
-  (1, 2, NOW()),
-  (1, 3, NOW()),
-  (1, 4, NOW()),
-  (1, 5, NOW()),
-  (2, 2, NOW()),
-  (2, 6, NOW()),
-  (9, 7, NOW()),
-  (9, 3, NOW()),
-  (9, 4, NOW()),
-  (11, 2, NOW()),
-  (11, 4, NOW()),
-  (11, 7, NOW()),
-  (11, 8, NOW()),
-  (8, 2, NOW()),
-  (8, 6, NOW());
+INSERT INTO "employee_has_attestation" ("employee_id","attestation_id") VALUES
+  (2, 1),
+  (2, 2),
+  (2, 8),
+  (3, 1),
+  (3, 9),
+  (4, 1),
+  (4, 9),
+  (5, 1),
+  (6, 2),
+  (6, 8),
+  (7, 9),
+  (7, 1),
+  (8, 1),
+  (9, 1),
+  (9, 9),
+  (9, 10),
+  (9, 11),
+  (10, 1),
+  (10, 10),
+  (11, 10);
 
-INSERT INTO "employee_has_skill" ("employee_id", "skill_id", "created_at") VALUES
-  (1, 1, NOW()),
-  (1, 2, NOW()),
-  (2, 5, NOW()),
-  (2, 6, NOW()),
-  (3, 3, NOW()),
-  (4, 1, NOW()),
-  (4, 2, NOW()),
-  (5, 2, NOW()),
-  (5, 3, NOW()),
-  (5, 4, NOW()),
-  (5, 1, NOW()),
-  (6, 5, NOW()),
-  (6, 5, NOW()),
-  (7, 1, NOW());
-
-COMMIT;
+INSERT INTO "employee_has_skill" ("employee_id", "skill_id") VALUES
+  (1, 1),
+  (1, 2),
+  (2, 5),
+  (2, 6),
+  (3, 3),
+  (4, 1),
+  (4, 2),
+  (5, 2),
+  (5, 3),
+  (5, 4),
+  (5, 1),
+  (6, 5),
+  (7, 5),
+  (7, 1),
+  (8, 2),
+  (9, 1),
+  (10, 1),
+  (11, 6),
+  (12, 1);
 
 COMMIT;

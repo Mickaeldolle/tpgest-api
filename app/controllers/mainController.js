@@ -1,7 +1,7 @@
-// const debug = require('debug')('projet:mainController');
+const debug = require('debug')('projet:mainController');
 const mainDataMapper = require('../dataMappers/mainDataMapper');
 
-const locationController = {
+const mainController = {
 
   getAllRessources: async (req, res) => {
     const { table } = req.params;
@@ -37,7 +37,14 @@ const locationController = {
     const result = await mainDataMapper.delete(ressource, id);
     return res.status(200).json(result);
   },
+  async test(req, res) {
+    debug("dans le ctrl")
+    const details = Object.keys(req.query);
+    const { data } = req.params;
+    const result = await mainDataMapper.getTest(data, details)
+    return res.json(result)
+  }
 
 };
 
-module.exports = locationController;
+module.exports = mainController;
